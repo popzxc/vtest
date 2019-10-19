@@ -5,6 +5,9 @@ Handy unils for writing tests in [V](https://vlang.io/) language.
 This lirary provides several `assert_***` functions which enhance the possibilites
 of builtin `assert` statement, giving the colored diff of expected and gotten value.
 
+When generic functions will be available in V, concrete `assert_eq_str` and `assert_eq_int` will
+be replaced with one `assert_eq` function.
+
 ![screenshot](vtest.png)
 
 > The version of this module will remain in `0.x.x` unless the language API's are finalized and implemented.
