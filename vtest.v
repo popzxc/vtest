@@ -74,7 +74,7 @@ fn build_diff(left_input string, right_input string) string {
         if left[i] == right[i] {
             left_diff += left[i].str()
             right_diff += right[i].str()
-            i += 1
+            i++
             continue
         }
 
@@ -84,7 +84,7 @@ fn build_diff(left_input string, right_input string) string {
         for i < min_length && left[i] != right[i] {
             left_current_diff += left[i].str()
             right_current_diff += right[i].str()
-            i += 1
+            i++
         }
 
         left_diff += term.green(left_current_diff)
