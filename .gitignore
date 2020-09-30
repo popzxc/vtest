@@ -1,4 +1,6 @@
 .vscode
+*.code-workspace
 target
 vtest_test
 vtest
+vtest.so

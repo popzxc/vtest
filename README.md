@@ -1,9 +1,9 @@
 # vtest 0.1.0
 
-Handy unils for writing tests in [V](https://vlang.io/) language.
+Handy utils for writing tests in [V](https://vlang.io/) language.
 
-This lirary provides several `assert_***` functions which enhance the possibilites
-of builtin `assert` statement, giving the colored diff of expected and gotten value.
+This library provides several `assert_***` functions which enhance the possibilitis
+of the builtin `assert` statement, giving the colored diff of expected and gotten value.
 
 When generic functions will be available in V, concrete `assert_eq_str` and `assert_eq_int` will
 be replaced with one `assert_eq` function.
