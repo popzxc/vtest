@@ -26,8 +26,8 @@ fn test_build() {
     right := "1320\n1000"
 
     mut expected_msg := ""
-    expected_msg += "Left:  `1" + term.green("00") + "0\\n1000`" + vtest.NEWLINE_SEPARATOR
-    expected_msg += "Right: `1" + term.red("32") + "0\\n1000`" + vtest.NEWLINE_SEPARATOR
+    expected_msg += "Left:  `1" + term.green("00") + "0\\n1000`" + vtest.newline_separator
+    expected_msg += "Right: `1" + term.red("32") + "0\\n1000`" + vtest.newline_separator
 
     assert vtest.assert_eq_str(expected_msg, vtest.build_diff(left, right))
 }

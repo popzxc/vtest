@@ -4,8 +4,8 @@ import term
 
 const (
     // TODO should be OS-independent
-    NEWLINE_SEPARATOR = "\n"
-    ASSERT_FAIL_MSG = term.red("Assertion failure:") + NEWLINE_SEPARATOR
+    newline_separator = "\n"
+    assert_fail_msg = term.red("Assertion failure:") + newline_separator
 )
 
 // Checks wheter two integers are equal
@@ -96,29 +96,29 @@ fn build_diff(left_input string, right_input string) string {
     } else if right.len > left.len {
         right_diff += term.red(right.substr(left.len, right.len))
     }
-    
-    mut diff_msg := "Left:  `$left_diff`" + NEWLINE_SEPARATOR
-    diff_msg += "Right: `$right_diff`" + NEWLINE_SEPARATOR
+
+    mut diff_msg := "Left:  `$left_diff`" + newline_separator
+    diff_msg += "Right: `$right_diff`" + newline_separator
 
     return diff_msg
 }
 
 fn assertion_failure_msg() string {
-    return ASSERT_FAIL_MSG
+    return assert_fail_msg
 }
 
 fn assert_eq_fail_msg(left string, right string) string {
     mut message := assertion_failure_msg()
 
     message += build_diff(left, right)
-    
+
     return message
 }
 
 fn assert_bool_fail_msg(expected bool, got bool) string {
     mut message := assertion_failure_msg()
 
-    message += "Expected " + term.green(expected.str()) + ", got " + term.red(got.str()) + NEWLINE_SEPARATOR
+    message += "Expected " + term.green(expected.str()) + ", got " + term.red(got.str()) + newline_separator
 
     return message
 }
