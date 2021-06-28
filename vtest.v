@@ -9,7 +9,7 @@ const (
 )
 
 // Checks wheter two integers are equal
-pub fn assert_eq_int(left, right int) bool {
+pub fn assert_eq_int(left int, right int) bool {
 	if left != right {
 		eprintln(assert_eq_fail_msg(left.str(), right.str()))
 		return false
@@ -18,7 +18,7 @@ pub fn assert_eq_int(left, right int) bool {
 }
 
 // Checks wheter two integers are not equal
-pub fn assert_ne_int(left, right int) bool {
+pub fn assert_ne_int(left int, right int) bool {
 	if left == right {
 		eprintln(assert_eq_fail_msg(left.str(), right.str()))
 		return false
@@ -27,7 +27,7 @@ pub fn assert_ne_int(left, right int) bool {
 }
 
 // Checks wheter two strings are equal
-pub fn assert_eq_str(left, right string) bool {
+pub fn assert_eq_str(left string, right string) bool {
 	if left != right {
 		eprintln(assert_eq_fail_msg(left, right))
 		return false
@@ -36,7 +36,7 @@ pub fn assert_eq_str(left, right string) bool {
 }
 
 // Checks wheter two strings are not equal
-pub fn assert_ne_str(left, right string) bool {
+pub fn assert_ne_str(left string, right string) bool {
 	if left == right {
 		eprintln(assert_eq_fail_msg(left, right))
 		return false
@@ -55,7 +55,7 @@ pub fn assert_true(val bool) bool {
 }
 
 // Builds a colored diff between two strings
-fn build_diff(left_input, right_input string) string {
+fn build_diff(left_input string, right_input string) string {
 	left := unescape_newline(left_input)
 	right := unescape_newline(right_input)
 	mut min_length := 0
@@ -89,28 +89,29 @@ fn build_diff(left_input, right_input string) string {
 	} else if right.len > left.len {
 		right_diff += term.red(right.substr(left.len, right.len))
 	}
-	mut diff_msg := 'Left:  `$left_diff`' + newline_separator
-	diff_msg += 'Right: `$right_diff`' + newline_separator
+	mut diff_msg := 'Left:  `$left_diff`' + vtest.newline_separator
+	diff_msg += 'Right: `$right_diff`' + vtest.newline_separator
 	return diff_msg
 }
 
 fn assertion_failure_msg() string {
-	return assert_fail_msg
+	return vtest.assert_fail_msg
 }
 
-fn assert_eq_fail_msg(left, right string) string {
+fn assert_eq_fail_msg(left string, right string) string {
 	mut message := assertion_failure_msg()
 	message += build_diff(left, right)
 	return message
 }
 
-fn assert_bool_fail_msg(expected, got bool) string {
+fn assert_bool_fail_msg(expected bool, got bool) string {
 	mut message := assertion_failure_msg()
-	message += 'Expected ' + term.green(expected.str()) + ', got ' + term.red(got.str()) + newline_separator
+	message += 'Expected ' + term.green(expected.str()) + ', got ' + term.red(got.str()) +
+		vtest.newline_separator
 	return message
 }
 
-fn assert_bool(expected, got bool) bool {
+fn assert_bool(expected bool, got bool) bool {
 	if expected != got {
 		eprintln(assert_bool_fail_msg(expected, got))
 		return false
